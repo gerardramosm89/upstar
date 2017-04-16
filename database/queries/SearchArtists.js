@@ -28,12 +28,14 @@ module.exports = (criteria, sortProperty, offset = 0, limit = 20) => {
 
 };
 
+// Look at mongo docs for $text earch, or you can do $regex as well
+
 const buildQuery = (criteria) => {
   const query = {
 
   };
   if (criteria.name) {
-    
+    query.$text = { $search: criteria.name };
   }
 
   if (criteria.age) {
